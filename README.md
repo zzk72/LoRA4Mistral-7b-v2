@@ -121,7 +121,8 @@ PEFT 0.10.0, Transformers library
   author = {Zhang Zhenkui},
   title = {LoRA-finetuned Mistral-7B for Prompt Recovery},
   year = {2024},
-  url = {https://your-repo-link}
+  url = {[zzk's repo](https://github.com/zzk72/LoRA4Mistral-7b-v2)}
+
 }
 ```
 
