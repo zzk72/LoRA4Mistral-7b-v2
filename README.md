@@ -3,200 +3,137 @@ library_name: peft
 base_model: /home/zbdc/LLMs/mistral-7b-v2
 ---
 
-# Model Card for Model ID
+# Model Card for LoRA-finetuned Mistral-7B
 
-<!-- Provide a quick summary of what the model is/does. -->
-
-
+This model is a LoRA-finetuned version of Mistral-7B, aimed at recovering prompts for large language models. Only the LoRA adapter parameters are being open-sourced.
 
 ## Model Details
 
 ### Model Description
 
-<!-- Provide a longer summary of what this model is. -->
+This model has been fine-tuned using LoRA (Low-Rank Adaptation) on the Mistral-7B base model to enhance its ability to generate and recover prompts for large language models. The fine-tuning process improves the model's performance in specific text generation and prompt recovery tasks.
 
+- **Developed by:** Zhang Zhenkui
+- **Model type:** Fine-tuned LLM
+- **Language(s) (NLP):** English
+- **License:** Apache License
+- **Finetuned from model:** Mistral-7B-v2
 
+### Model Sources
 
-- **Developed by:** [More Information Needed]
-- **Funded by [optional]:** [More Information Needed]
-- **Shared by [optional]:** [More Information Needed]
-- **Model type:** [More Information Needed]
-- **Language(s) (NLP):** [More Information Needed]
-- **License:** [More Information Needed]
-- **Finetuned from model [optional]:** [More Information Needed]
-
-### Model Sources [optional]
-
-<!-- Provide the basic links for the model. -->
-
-- **Repository:** [More Information Needed]
-- **Paper [optional]:** [More Information Needed]
-- **Demo [optional]:** [More Information Needed]
+- **Repository:** https://github.com/zzk72/LoRA4Mistral-7b-v2
+- **Paper [optional]:** N/A
+- **Demo [optional]:** N/A
 
 ## Uses
 
-<!-- Address questions around how the model is intended to be used, including the foreseeable users of the model and those affected by the model. -->
-
 ### Direct Use
 
-<!-- This section is for the model use without fine-tuning or plugging into a larger ecosystem/app. -->
+This model can be used directly for text generation and prompt recovery tasks in large language models.
 
-[More Information Needed]
+### Downstream Use
 
-### Downstream Use [optional]
-
-<!-- This section is for the model use when fine-tuned for a task, or when plugged into a larger ecosystem/app -->
-
-[More Information Needed]
+Fine-tuned for specific tasks such as prompt recovery, text generation, and other NLP tasks requiring contextual understanding and text coherence.
 
 ### Out-of-Scope Use
 
-<!-- This section addresses misuse, malicious use, and uses that the model will not work well for. -->
-
-[More Information Needed]
+The model is not suitable for tasks outside the domain of text generation and prompt recovery, and may not perform well on unrelated NLP tasks.
 
 ## Bias, Risks, and Limitations
 
-<!-- This section is meant to convey both technical and sociotechnical limitations. -->
-
-[More Information Needed]
+The model inherits biases from the training data and the base model. It is important to consider these biases when deploying the model in sensitive applications.
 
 ### Recommendations
 
-<!-- This section is meant to convey recommendations with respect to the bias, risk, and technical limitations. -->
-
-Users (both direct and downstream) should be made aware of the risks, biases and limitations of the model. More information needed for further recommendations.
-
-## How to Get Started with the Model
-
-Use the code below to get started with the model.
-
-[More Information Needed]
+Users should be aware of the biases and limitations of the model. It is recommended to evaluate the model's performance in your specific use case and make adjustments as necessary.
 
 ## Training Details
 
 ### Training Data
 
-<!-- This should link to a Dataset Card, perhaps with a short stub of information on what the training data is all about as well as documentation related to data pre-processing or additional filtering. -->
-
-[More Information Needed]
+The training data consists of a mixture of human-written and LLM-generated texts, processed to enhance the model's ability to recover and generate prompts.
 
 ### Training Procedure
 
-<!-- This relates heavily to the Technical Specifications. Content here should link to that section when it is relevant to the training procedure. -->
+#### Preprocessing
 
-#### Preprocessing [optional]
-
-[More Information Needed]
-
+Text data was preprocessed using custom BPE tokenization to handle typographical errors effectively.
 
 #### Training Hyperparameters
 
-- **Training regime:** [More Information Needed] <!--fp32, fp16 mixed precision, bf16 mixed precision, bf16 non-mixed precision, fp16 non-mixed precision, fp8 mixed precision -->
-
-#### Speeds, Sizes, Times [optional]
-
-<!-- This section provides information about throughput, start/end time, checkpoint size if relevant, etc. -->
-
-[More Information Needed]
+- **Training regime:** fp16 mixed precision
 
 ## Evaluation
-
-<!-- This section describes the evaluation protocols and provides the results. -->
 
 ### Testing Data, Factors & Metrics
 
 #### Testing Data
 
-<!-- This should link to a Dataset Card if possible. -->
-
-[More Information Needed]
+The evaluation was conducted on a separate dataset comprising both human-written and LLM-generated texts.
 
 #### Factors
 
-<!-- These are the things the evaluation is disaggregating by, e.g., subpopulations or domains. -->
-
-[More Information Needed]
+Evaluation factors include text coherence, prompt recovery accuracy, and generation quality.
 
 #### Metrics
 
-<!-- These are the evaluation metrics being used, ideally with a description of why. -->
-
-[More Information Needed]
+- Accuracy
+- F1 Score
+- BLEU Score
 
 ### Results
 
-[More Information Needed]
+The model achieved high accuracy in prompt recovery and demonstrated strong performance in text generation tasks.
 
 #### Summary
 
-
-
-## Model Examination [optional]
-
-<!-- Relevant interpretability work for the model goes here -->
-
-[More Information Needed]
+The LoRA-finetuned Mistral-7B model is effective in generating and recovering prompts for large language models, providing enhanced performance over the base model.
 
 ## Environmental Impact
 
-<!-- Total emissions (in grams of CO2eq) and additional considerations, such as electricity usage, go here. Edit the suggested text below accordingly -->
-
 Carbon emissions can be estimated using the [Machine Learning Impact calculator](https://mlco2.github.io/impact#compute) presented in [Lacoste et al. (2019)](https://arxiv.org/abs/1910.09700).
 
-- **Hardware Type:** [More Information Needed]
-- **Hours used:** [More Information Needed]
-- **Cloud Provider:** [More Information Needed]
-- **Compute Region:** [More Information Needed]
-- **Carbon Emitted:** [More Information Needed]
+- **Hardware Type:** GPUs 2*RTX3090
+- **Hours used:** 5h 
 
-## Technical Specifications [optional]
+## Technical Specifications
 
 ### Model Architecture and Objective
 
-[More Information Needed]
+LoRA-finetuned Mistral-7B for prompt recovery tasks.
 
 ### Compute Infrastructure
 
-[More Information Needed]
-
 #### Hardware
 
-[More Information Needed]
+GPUs used for training.
 
 #### Software
 
-[More Information Needed]
+PEFT 0.10.0, Transformers library
 
-## Citation [optional]
-
-<!-- If there is a paper or blog post introducing the model, the APA and Bibtex information for that should go in this section. -->
+## Citation
 
 **BibTeX:**
 
-[More Information Needed]
+```
+@misc{zhang_zhenkui_2024,
+  author = {Zhang Zhenkui},
+  title = {LoRA-finetuned Mistral-7B for Prompt Recovery},
+  year = {2024},
+  url = {https://your-repo-link}
+}
+```
 
 **APA:**
 
-[More Information Needed]
+Zhang Zhenkui. (2024). LoRA-finetuned Mistral-7B for Prompt Recovery. Retrieved from https://your-repo-link
 
-## Glossary [optional]
+## Model Card Authors
 
-<!-- If relevant, include terms and calculations in this section that can help readers understand the model or model card. -->
+Zhang Zhenkui
 
-[More Information Needed]
 
-## More Information [optional]
-
-[More Information Needed]
-
-## Model Card Authors [optional]
-
-[More Information Needed]
-
-## Model Card Contact
-
-[More Information Needed]
 ### Framework versions
 
 - PEFT 0.10.0
